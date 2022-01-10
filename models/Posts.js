@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const addPostSchema = new Schema({
+  _id: Schema.Types.ObjectId,
   type: {
     type: String,
     require: true,
@@ -20,8 +21,7 @@ const addPostSchema = new Schema({
     default: Date.now,
   },
   photo: {
-    data: Buffer,
-    contentType: String,
+    type: String,
   },
   author_id: {
     type: mongoose.Types.ObjectId,
