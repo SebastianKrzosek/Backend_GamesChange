@@ -14,8 +14,6 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
-app.use(cors(corsOptions));
-
 const app = express();
 
 // body parser
@@ -33,23 +31,13 @@ mongoose
   .catch((err) => console.error(err));
 // passport middleware
 app.use(passport.initialize());
-
+app.use(cors(corsOptions));
 // passport config
 require("./config/passport")(passport);
 
 // use routes
 app.use("/api/posts", posts);
 app.use("/api/profile", user);
-
-// Access controll
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
 const port = process.env.PORT || 8080;
 
