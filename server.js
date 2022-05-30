@@ -6,6 +6,15 @@ const passport = require("passport");
 // routes
 const posts = require("./routes/api/posts");
 const user = require("./routes/api/profile");
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 const app = express();
 
