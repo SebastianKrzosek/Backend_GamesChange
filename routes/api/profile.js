@@ -146,29 +146,6 @@ router.get(
   }
 );
 
-// @route   Get request api/profile/:login
-// @desc    Get user by id
-// @access  Public
-// router.get("/:id", (req, res) => {
-//   let errors = {};
-//   User.findOne({ author_id: req.body.author_id })
-//     .then((user) => {
-//       if (!user) {
-//         errors.profile = "Nie ma użytkownika o takim identyfikatorze";
-//         res.status(404).json(errors);
-//       }
-//       res.json({
-//         id: user.id,
-//         login: user.login,
-//         email: user.email,
-//         phone: user.phone,
-//         avatar: user.avatar,
-//         city: user.city,
-//       });
-//     })
-//     .catch((err) => res.status(404).json(err));
-// });
-
 router.get("/:id", (req, res) => {
   let errors = {};
   User.findOne({ _id: req.params.id.slice(1) })
